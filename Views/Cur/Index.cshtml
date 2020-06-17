@@ -1,0 +1,107 @@
+﻿@{
+    ViewBag.Title = "Pogoda";
+}
+@model Tuple<IEnumerable<SelectListItem>, IEnumerable<SelectListItem>>
+
+<div class="currency-container">
+    <h2>Pogoda</h2>
+
+    <canvas id="chart" style="width: 512px; height: 320px"></canvas>
+    <div class="row">
+        @*<div class="col-md-6 pull-left">
+                <section>
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Message : </label>
+                            <div class="col-md-9">
+                                <textarea id="message" class="form-control"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Send to: </label>
+                            <div class="col-md-9">
+                                <div id="users">
+                                    @Html.DropDownList("choose", new List<SelectListItem>() { new SelectListItem() { Text = "User", Value = "User" }, new SelectListItem() { Text = "Group", Value = "Group" } }, new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Users: </label>
+                            <div class="col-md-9">
+                                <div id="users">
+                                    @Html.DropDownList("user", Model.Item1, new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Groups: </label>
+                            <div class="col-md-9">
+                                <div id="users">
+                                    @Html.DropDownList("curGroup", Model.Item2, new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-9">
+                                <input type="button" id="sendmessage" value="Send" class="btn btn-default" />
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>*@
+        <div>
+            <img id="weathericon" src='' />
+        </div>
+
+
+        <div class="col-md-6 pull-right">
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-md-2 control-label">Ostatnia aktualizacja API: </label>
+                </div>
+                <div class="row">
+                    <ul id="discussion"></ul>
+                </div>
+            </div>
+        </div>
+
+        <form class="col-md-6 pull-left">
+            <div class="row">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Miasta: </label>
+                    <div class="col-md-9">
+                        <div id="citys">
+                            @Html.DropDownList("city", Model.Item2, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-9">
+                        <input type="button" id="sendmessage2" value="Obserwuj pogodę" class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/js/Chart.bundle.js"></script>
+
+    @*<script src="~/js/currency.js"></script>*@
+    <script src="~/js/utils.js"></script>
+    @*<script>var exports = { "__esModule": true };</script>*@
+    @*<script src="~/js/CancellationToken.js" type="module"></script>*@
+    <script src="~/lib/@@aspnet/signalr/dist/browser/signalr.js"></script>
+    <script src="~/js/ChartConnection.js"></script>
+}
